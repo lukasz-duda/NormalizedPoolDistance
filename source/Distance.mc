@@ -1,6 +1,6 @@
 class Distance {
 
-    function normalize() {
+    function normalize(request) {
     }
     
 }

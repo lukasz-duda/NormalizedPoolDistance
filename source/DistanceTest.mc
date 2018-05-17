@@ -5,7 +5,9 @@ class DistanceTest {
     (:test)
     function testNormalizedDistance(logger) {
         var distance = new Distance();
-        distance.normalize();
+        
+        var request = new Request();
+        distance.normalize(request);
         
         Test.assertEqual(1, 1);
         
