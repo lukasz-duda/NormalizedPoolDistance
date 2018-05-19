@@ -11,6 +11,6 @@ class Request {
     }
     
     function setTimerTime(timerTime) {
-        reportedTime = timerTime / 1000;
+        reportedTime = timerTime != null ? timerTime / 1000 : 0;
     }
 }

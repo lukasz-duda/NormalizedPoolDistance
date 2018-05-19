@@ -37,4 +37,14 @@ class RequestTest {
         return true; 
     }
     
+    (:test)
+    function nullTimerTime(logger) {
+        var request = new Request();
+        
+        request.setTimerTime(null);
+        
+        RequestTest.assertEqual(0, request.reportedTime);
+        return true; 
+    }
+    
 }
