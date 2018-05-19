@@ -1,4 +1,7 @@
 <strings>
     <string id="AppName">Znormalizowany dystans basenu</string>
     <string id="Label">Dystans znormalizowany</string>
+    <string id="MaximumTempoTitle">Maksymalne tempo</string>
+    <string id="MaximumTempoPrompt">Minimalna liczba sekund na 100 metrów</string>
+    <string id="TempoError">Niewłaściwe tempo. Podaj liczbę sekund na 100 metrów.</string>
 </strings>
