@@ -4,4 +4,5 @@
     <string id="MaximumTempoTitle">Maximum tempo</string>
     <string id="MaximumTempoPrompt">Minimum number of seconds per 100 meters</string>
     <string id="TempoError">Invalid tempo. Please provide number of seconds per 100 meters.</string>
+    <string id="Unit">m</string>
 </strings>
