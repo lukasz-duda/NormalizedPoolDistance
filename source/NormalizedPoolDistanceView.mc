@@ -32,8 +32,8 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
 
     function compute(info) {
         var request = new Request();
-        request.lastDistance = lastTime;
-        request.lastTime = lastDistance;
+        request.lastDistance = lastDistance;
+        request.lastTime = lastTime;
         request.maximumTempo = maximumTempo;
         request.setTimerTime(info.timerTime);
         request.setElapsedDistance(info.elapsedDistance);
