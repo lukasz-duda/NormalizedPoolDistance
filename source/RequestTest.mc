@@ -6,9 +6,9 @@ class RequestTest {
     function setElapsedDistance_setsReportedDistance(logger) {
         var request = new Request();
         
-        request.setElapsedDistance(123);
+        request.setElapsedDistance(123.45);
         
-        RequestTest.assertEqual(123, request.reportedDistance);
+        RequestTest.assertEqual(123.45, request.reportedDistance);
         return true; 
     }
     

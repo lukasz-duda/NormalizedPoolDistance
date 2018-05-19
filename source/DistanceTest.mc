@@ -61,5 +61,24 @@ class DistanceTest {
         DistanceTest.assertEqual(request.lastDistance, response.lastDistance);
         return true;
     }
+    
+    (:test)
+    function returnsIntegerDistance(logger) {
+        var distance = new Distance();
+        
+        var request = new Request();
+        request.lastDistance = 0;
+        request.lastTime = 0;
+        request.maximumTempo = 80;
+        request.reportedTime = 30;
+        request.reportedDistance = 37.5;
+        
+        var response = distance.normalize(request);
+        
+        DistanceTest.assertEqual(request.reportedTime, response.lastTime);
+        DistanceTest.assertEqual(37, response.lastDistance);
+        
+        return true;
+    }
 
 }
