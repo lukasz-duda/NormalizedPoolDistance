@@ -1,3 +1,4 @@
 <strings>
-    <string id="AppName">NormalizedPoolDistance</string>
+    <string id="AppName">Normalized pool distance</string>
+    <string id="Label">Normalized distance</string>
 </strings>

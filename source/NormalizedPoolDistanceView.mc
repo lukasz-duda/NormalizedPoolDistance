@@ -2,10 +2,9 @@ using Toybox.WatchUi as Ui;
 
 class NormalizedPoolDistanceView extends Ui.SimpleDataField {
 
-    // Set the label of the data field here.
     function initialize() {
         SimpleDataField.initialize();
-        label = "My Label";
+        label = Ui.loadResource(Rez.Strings.Label);
     }
 
     // The given info object contains all the current workout
