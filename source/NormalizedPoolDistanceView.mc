@@ -2,9 +2,12 @@ using Toybox.WatchUi as Ui;
 
 class NormalizedPoolDistanceView extends Ui.SimpleDataField {
 
+    var maximumTempo;
+
     function initialize() {
         SimpleDataField.initialize();
         label = Ui.loadResource(Rez.Strings.Label);
+        maximumTempo = application.getProperty("MaximumTempo");
     }
 
     // The given info object contains all the current workout

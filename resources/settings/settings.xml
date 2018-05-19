@@ -1,0 +1,8 @@
+<settings>
+    <setting propertyKey="@Properties.MaximumTempo"
+        title="@Strings.MaximumTempoTitle"
+        prompt="@Strings.MaximumTempoPrompt">
+        <settingConfig type="numeric"
+            errorMessage="@Strings.TempoError" />
+    </setting>
+</settings>

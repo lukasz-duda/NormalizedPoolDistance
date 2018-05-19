@@ -1,4 +1,7 @@
 <strings>
     <string id="AppName">Normalized pool distance</string>
     <string id="Label">Normalized distance</string>
+    <string id="MaximumTempoTitle">Maximum tempo</string>
+    <string id="MaximumTempoPrompt">Minimum number of seconds per 100 meters</string>
+    <string id="TempoError">Invalid tempo. Please provide number of seconds per 100 meters.</string>
 </strings>
