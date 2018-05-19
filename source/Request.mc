@@ -6,4 +6,7 @@ class Request {
     var reportedTime;
     var reportedDistance;
 
+    function setElapsedDistance(elapsedDistance) {
+        reportedDistance = elapsedDistance != null ? elapsedDistance : 0;
+    }
 }

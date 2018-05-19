@@ -2,21 +2,33 @@ using Toybox.WatchUi as Ui;
 
 class NormalizedPoolDistanceView extends Ui.SimpleDataField {
 
+    var distance;
+
     var maximumTempo;
+    var lastTime = 0;
+    var lastDistance = 0;
 
     function initialize() {
         SimpleDataField.initialize();
         label = Ui.loadResource(Rez.Strings.Label);
+        var application = Application.getApp();
         maximumTempo = application.getProperty("MaximumTempo");
+        distance = new Distance();
     }
 
-    // The given info object contains all the current workout
-    // information. Calculate a value and return it in this method.
-    // Note that compute() and onUpdate() are asynchronous, and there is no
-    // guarantee that compute() will be called before onUpdate().
     function compute(info) {
-        // See Activity.Info in the documentation for available information.
-        return 0.0;
+        var request = new Request();
+        request.lastDistance = lastTime;
+        request.lastTime = lastDistance;
+        request.maximumTempo = maximumTempo;
+        request.reportedTime = info.timerTime / 1000;
+        request.setElapsedDistance(info.elapsedDistance);
+        
+        var response = distance.normalize(request);
+        
+        lastTime = response.lastTime;
+        lastDistance = response.lastDistance;
+        return lastDistance;
     }
 
 }
