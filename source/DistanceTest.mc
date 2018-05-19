@@ -43,5 +43,23 @@ class DistanceTest {
         DistanceTest.assertEqual(request.lastDistance, response.lastDistance);
         return true;
     }
+    
+    (:test)
+    function whenNoMove_normalizedEqualsLast(logger) {
+        var distance = new Distance();
+        
+        var request = new Request();
+        request.lastDistance = 25;
+        request.lastTime = 20;
+        request.maximumTempo = 80;
+        request.reportedTime = 40;
+        request.reportedDistance = 25;
+        
+        var response = distance.normalize(request);
+        
+        DistanceTest.assertEqual(request.lastTime, response.lastTime);
+        DistanceTest.assertEqual(request.lastDistance, response.lastDistance);
+        return true;
+    }
 
 }
