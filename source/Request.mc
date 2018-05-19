@@ -9,4 +9,8 @@ class Request {
     function setElapsedDistance(elapsedDistance) {
         reportedDistance = elapsedDistance != null ? elapsedDistance : 0;
     }
+    
+    function setTimerTime(timerTime) {
+        reportedTime = timerTime / 1000;
+    }
 }

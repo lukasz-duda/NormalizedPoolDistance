@@ -26,5 +26,15 @@ class RequestTest {
         RequestTest.assertEqual(0, request.reportedDistance);
         return true;        
     }
+
+    (:test)
+    function setTimerTime_setsReportedTime(logger) {
+        var request = new Request();
+        
+        request.setTimerTime(123000);
+        
+        RequestTest.assertEqual(123, request.reportedTime);
+        return true; 
+    }
     
 }

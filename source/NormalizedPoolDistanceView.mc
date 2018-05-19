@@ -21,7 +21,7 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
         request.lastDistance = lastTime;
         request.lastTime = lastDistance;
         request.maximumTempo = maximumTempo;
-        request.reportedTime = info.timerTime / 1000;
+        request.setTimerTime(info.timerTime);
         request.setElapsedDistance(info.elapsedDistance);
         
         var response = distance.normalize(request);
