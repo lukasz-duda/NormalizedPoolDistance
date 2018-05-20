@@ -7,7 +7,7 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
 
     var maximumTempo;
     var lastTime = 0;
-    var lastReportedDistance = 0.0;
+    var lastReportedDistance = 0;
     var normalizedDistance = 0;
     
     var normalizedDistanceField;

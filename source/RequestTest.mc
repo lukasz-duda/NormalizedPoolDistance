@@ -8,7 +8,7 @@ class RequestTest {
         
         request.setElapsedDistance(123.45);
         
-        RequestTest.assertEqual(123.45, request.reportedDistance);
+        RequestTest.assertEqual(123, request.reportedDistance);
         return true; 
     }
     

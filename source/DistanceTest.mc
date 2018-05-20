@@ -68,27 +68,6 @@ class DistanceTest {
     }
     
     (:test)
-    function returnsIntegerDistance(logger) {
-        var distance = new Distance();
-        
-        var request = new Request();
-        request.lastReportedDistance = 0;
-        request.lastTime = 0;
-        request.normalizedDistance = 0;
-        request.maximumTempo = 80;
-        request.reportedTime = 30;
-        request.reportedDistance = 37.5;
-        
-        var response = distance.normalize(request);
-        
-        DistanceTest.assertEqual(request.reportedTime, response.lastTime);
-        DistanceTest.assertEqual(request.reportedDistance, response.lastReportedDistance);
-        DistanceTest.assertEqual(37, response.normalizedDistance);
-        
-        return true;
-    }
-    
-    (:test)
     function afterInvalidPool_acceptsTheNextValid(logger) {
         var distance = new Distance();
         

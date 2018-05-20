@@ -15,7 +15,7 @@ class Distance {
 	        response.lastTime = request.reportedTime;
             response.lastReportedDistance = request.reportedDistance;
             var poolLength = request.reportedDistance - request.lastReportedDistance;
-            response.normalizedDistance = (request.normalizedDistance + poolLength).toNumber();
+            response.normalizedDistance = request.normalizedDistance + poolLength;
 	        return response;
         }        
     }

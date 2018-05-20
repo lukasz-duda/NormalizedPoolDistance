@@ -8,7 +8,7 @@ class Request {
     var reportedDistance;
 
     function setElapsedDistance(elapsedDistance) {
-        reportedDistance = elapsedDistance != null ? elapsedDistance : 0;
+        reportedDistance = elapsedDistance != null ? elapsedDistance.toNumber() : 0;
     }
     
     function setTimerTime(timerTime) {
