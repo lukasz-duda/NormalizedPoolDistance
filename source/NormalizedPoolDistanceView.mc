@@ -70,6 +70,7 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
     }
 
     function onTimerStart() {
+        updateLastDistanceTime();
         timerRunning = true;
     }
     
@@ -94,10 +95,12 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
     }
 
     function onTimerLap() {
+        updateLastDistanceTime();
         lastLapDistance = normalizedDistance;
     }
 
     function onTimerReset() {
+        updateLastDistanceTime();
         lastLapDistance = normalizedDistance;
     }
 
