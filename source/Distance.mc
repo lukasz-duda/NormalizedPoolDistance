@@ -5,14 +5,14 @@ class Distance {
          
         if(invalidReport) {
             var response = new Response();
-            response.lastTime = request.lastTime;
+            response.lastDistanceTime = request.lastDistanceTime;
             response.lastReportedDistance = request.reportedDistance;
             response.normalizedDistance = request.lastReportedDistance;
             return response;
         }
         else {
 	        var response = new Response();
-	        response.lastTime = request.reportedTime;
+	        response.lastDistanceTime = request.reportedTime;
             response.lastReportedDistance = request.reportedDistance;
             var poolLength = request.reportedDistance - request.lastReportedDistance;
             response.normalizedDistance = request.normalizedDistance + poolLength;
@@ -27,9 +27,9 @@ class Distance {
     
     function tooFast(request) {
         var distanceDifference = request.reportedDistance - request.lastReportedDistance;
-        var tempoDistance = 100;
-        var timeDifference = request.reportedTime - request.lastTime;
-        var minimumTimeDifference = request.maximumTempo / (tempoDistance / distanceDifference);
+        var bestPaceDistane = 100;
+        var timeDifference = request.reportedTime - request.lastDistanceTime;
+        var minimumTimeDifference = request.bestPace / (bestPaceDistane / distanceDifference);
         var tooFast = timeDifference < minimumTimeDifference;
         return tooFast;
     }

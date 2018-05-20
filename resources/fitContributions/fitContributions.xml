@@ -1,8 +1,8 @@
 <resources>
     <fitContributions>
         <fitField id="0" displayInChart="true" sortOrder="0"
-            precision="0" chartTitle="@Strings.Label"
-            dataLabel="@Strings.Label" unitLabel="@Strings.Unit"
+            precision="0" chartTitle="@Strings.FieldLabel"
+            dataLabel="@Strings.FieldLabel" unitLabel="@Strings.Meter"
             fillColor="#c4540f" />
     </fitContributions>
 </resources>

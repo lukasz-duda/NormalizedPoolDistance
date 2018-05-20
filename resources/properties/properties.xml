@@ -1,3 +1,3 @@
 <properties>
-    <property id="MaximumTempo" type="number">100</property>
+    <property id="BestPace" type="number">100</property>
 </properties>

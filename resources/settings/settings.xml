@@ -1,8 +1,8 @@
 <settings>
-    <setting propertyKey="@Properties.MaximumTempo"
-        title="@Strings.MaximumTempoTitle"
-        prompt="@Strings.MaximumTempoPrompt">
+    <setting propertyKey="@Properties.BestPace"
+        title="@Strings.BestPaceTitle"
+        prompt="@Strings.BestPacePrompt">
         <settingConfig type="numeric"
-            errorMessage="@Strings.TempoError" />
+            errorMessage="@Strings.PaceError" />
     </setting>
 </settings>

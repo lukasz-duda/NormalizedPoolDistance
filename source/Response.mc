@@ -1,12 +1,12 @@
 class Response {
 
-    // The last time of normalizedDistance change is seconds. Toybox::Lang::Number
-    var lastTime;
-    
-    // The last elapsedDistance reported by the device in meters. Toybox::Lang::Number
+    // The elapsed distance of the current activity reported by the device in meters. Toybox::Lang::Number
     var lastReportedDistance;
     
-    // The calculated distance according to maximumPace. Toybox::Lang::Number
+    // The calculated distance in meters according to best pace. Toybox::Lang::Number
     var normalizedDistance;
+    
+    // The last time of normalized distance change is seconds. Toybox::Lang::Number
+    var lastDistanceTime;
 
 }
