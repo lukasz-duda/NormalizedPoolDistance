@@ -7,7 +7,7 @@ class Distance {
             var response = new Response();
             response.lastDistanceTime = request.lastDistanceTime;
             response.lastReportedDistance = request.reportedDistance;
-            response.normalizedDistance = request.lastReportedDistance;
+            response.normalizedDistance = request.normalizedDistance;
             return response;
         }
         else {
