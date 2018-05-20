@@ -3,19 +3,22 @@ using Toybox.FitContributor as Fit;
 
 class NormalizedPoolDistanceView extends Ui.SimpleDataField {
 
-    var distance;
-
     var bestPace;
+    var distance;
+    
+    const NORMALIZED_DISTANCE_FIELD_ID = 0;
+    var normalizedDistanceField;
+    
     var lastReportedDistance = 0;
     var lastDistanceTime = 0;
     var normalizedDistance = 0;
     
-    const NORMALIZED_DISTANCE_FIELD_ID = 0;
-    var normalizedDistanceField;
+    var timerRunning = false;
 
     function initialize() {
         SimpleDataField.initialize();
         label = Ui.loadResource(Rez.Strings.FieldLabel);
+        
         var application = Application.getApp();
         bestPace = application.getProperty("BestPace");
         distance = new Distance();
@@ -35,6 +38,15 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
     }
 
     function compute(info) {
+        if(timerRunning) {
+            normalizeDistance(info);
+            normalizedDistanceField.setData(normalizedDistance);
+        }
+        
+        return normalizedDistance;
+    }
+    
+    function normalizeDistance(info) {
         var request = new Request();
         request.lastReportedDistance = lastReportedDistance;
         request.normalizedDistance = normalizedDistance;
@@ -48,10 +60,34 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
         lastReportedDistance = response.lastReportedDistance;
         normalizedDistance = response.normalizedDistance;
         lastDistanceTime = response.lastDistanceTime;
-        
-        normalizedDistanceField.setData(normalizedDistance);
-        
-        return normalizedDistance;
+    }
+
+    function onTimerStart() {
+        timerRunning = true;
+    }
+
+    function onTimerStop() {
+        timerRunning = false;
+    }
+
+    function onTimerPause() {
+        timerRunning = false;
+    }
+
+    function onTimerResume() {
+        timerRunning = true;
+    }
+
+    function onTimerLap() {
+        lastReportedDistance = 0;
+        lastDistanceTime = 0;
+        normalizedDistance = 0;
+    }
+
+    function onTimerReset() {
+        lastReportedDistance = 0;
+        lastDistanceTime = 0;
+        normalizedDistance = 0;
     }
 
 }
