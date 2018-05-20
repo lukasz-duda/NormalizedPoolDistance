@@ -13,6 +13,7 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
     var lastDistanceTime = 0;
     var normalizedDistance = 0;
     
+    var lastLapDistance = 0;
     var timerRunning = false;
 
     function initialize() {
@@ -40,10 +41,12 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
     function compute(info) {
         if(timerRunning) {
             normalizeDistance(info);
-            normalizedDistanceField.setData(normalizedDistance);
+            var normalizedLapDistance = normalizedLapDistance();
+            normalizedDistanceField.setData(normalizedLapDistance);
+            return normalizedLapDistance;
+        } else {
+            return normalizedLapDistance();
         }
-        
-        return normalizedDistance;
     }
     
     function normalizeDistance(info) {
@@ -61,9 +64,20 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
         normalizedDistance = response.normalizedDistance;
         lastDistanceTime = response.lastDistanceTime;
     }
+    
+    function normalizedLapDistance() {
+        return normalizedDistance - lastLapDistance;
+    }
 
     function onTimerStart() {
         timerRunning = true;
+    }
+    
+    function updateLastDistanceTime() {
+        var info = Toybox.Activity.getActivityInfo();
+        var request = new Request();
+        request.setTimerTime(info.timerTime);
+        lastDistanceTime = request.reportedTime;
     }
 
     function onTimerStop() {
@@ -75,19 +89,16 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
     }
 
     function onTimerResume() {
+        updateLastDistanceTime();
         timerRunning = true;
     }
 
     function onTimerLap() {
-        lastReportedDistance = 0;
-        lastDistanceTime = 0;
-        normalizedDistance = 0;
+        lastLapDistance = normalizedDistance;
     }
 
     function onTimerReset() {
-        lastReportedDistance = 0;
-        lastDistanceTime = 0;
-        normalizedDistance = 0;
+        lastLapDistance = normalizedDistance;
     }
 
 }
