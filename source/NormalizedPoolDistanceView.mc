@@ -15,7 +15,7 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
 
     function initialize() {
         SimpleDataField.initialize();
-        label = Ui.loadResource(Rez.Strings.Label);
+        label = Ui.loadResource(Rez.Strings.FieldLabel);
         var application = Application.getApp();
         bestPace = application.getProperty("BestPace");
         distance = new Distance();
