@@ -4,12 +4,12 @@
             precision="0" chartTitle="@Strings.FieldLabel"
             dataLabel="@Strings.FieldLabel" unitLabel="@Strings.Meter"
             fillColor="#c4540f" />
-        <fitField id="0" displayInActivityLaps="true"
-            sortOrder="0" precision="0" chartTitle="@Strings.FieldLabel"
+        <fitField id="1" displayInActivityLaps="true"
+            displayInChart="false" sortOrder="1" precision="0"
             dataLabel="@Strings.FieldLabel" unitLabel="@Strings.Meter"
             fillColor="#c4540f" />
-        <fitField id="0" displayInActivitySummary="true"
-            sortOrder="0" precision="0" chartTitle="@Strings.FieldLabel"
+        <fitField id="2" displayInActivitySummary="true"
+            displayInChart="false" sortOrder="2" precision="0"
             dataLabel="@Strings.FieldLabel" unitLabel="@Strings.Meter"
             fillColor="#c4540f" />
     </fitContributions>
