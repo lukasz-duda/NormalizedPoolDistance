@@ -4,5 +4,13 @@
             precision="0" chartTitle="@Strings.FieldLabel"
             dataLabel="@Strings.FieldLabel" unitLabel="@Strings.Meter"
             fillColor="#c4540f" />
+        <fitField id="0" displayInActivityLaps="true"
+            sortOrder="0" precision="0" chartTitle="@Strings.FieldLabel"
+            dataLabel="@Strings.FieldLabel" unitLabel="@Strings.Meter"
+            fillColor="#c4540f" />
+        <fitField id="0" displayInActivitySummary="true"
+            sortOrder="0" precision="0" chartTitle="@Strings.FieldLabel"
+            dataLabel="@Strings.FieldLabel" unitLabel="@Strings.Meter"
+            fillColor="#c4540f" />
     </fitContributions>
 </resources>
