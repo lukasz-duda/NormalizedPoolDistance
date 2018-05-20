@@ -32,19 +32,19 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
             "NormalizedDistance",
             NORMALIZED_DISTANCE_FIELD_ID,
             Fit.DATA_TYPE_UINT16,
-            { :mesgType => Fit.MESG_TYPE_RECORD, :units => "m" });
+            { :nativeNum => 5, :mesgType => Fit.MESG_TYPE_RECORD, :units => "m" });
             
         normalizedLapDistanceField = createField(
             "NormalizedLapDistance",
             NORMALIZED_LAP_DISTANCE_FIELD_ID,
             Fit.DATA_TYPE_UINT16,
-            { :mesgType => Fit.MESG_TYPE_LAP, :units => "m" });
+            { :nativeNum => 9, :mesgType => Fit.MESG_TYPE_LAP, :units => "m" });
             
         normalizedSessionDistanceField = createField(
             "NormalizedSessionDistance",
             NORMALIZED_SESSION_DISTANCE_FIELD_ID,
             Fit.DATA_TYPE_UINT16,
-            { :mesgType => Fit.MESG_TYPE_SESSION, :units => "m" });
+            { :nativeNum => 9, :mesgType => Fit.MESG_TYPE_SESSION, :units => "m" });
             
         normalizedDistanceField.setData(0);
         normalizedLapDistanceField.setData(0);
