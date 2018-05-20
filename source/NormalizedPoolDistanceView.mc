@@ -29,6 +29,8 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
             NORMALIZED_DISTANCE_FIELD_ID,
             Fit.DATA_TYPE_UINT16,
             { :mesgType => Fit.MESG_TYPE_RECORD, :units => "m" });
+            
+        normalizedDistanceField.setData(0);
     }
 
     function compute(info) {
