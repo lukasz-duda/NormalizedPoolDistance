@@ -6,24 +6,27 @@ class Distance {
         if(invalidReport) {
             var response = new Response();
             response.lastTime = request.lastTime;
-            response.lastDistance = request.lastDistance;
+            response.lastReportedDistance = request.reportedDistance;
+            response.normalizedDistance = request.lastReportedDistance;
             return response;
         }
         else {
 	        var response = new Response();
 	        response.lastTime = request.reportedTime;
-	        response.lastDistance = request.reportedDistance.toNumber();
+            response.lastReportedDistance = request.reportedDistance;
+            var distanceDifference = request.reportedDistance - request.lastReportedDistance;
+            response.normalizedDistance = (request.normalizedDistance + distanceDifference).toNumber();
 	        return response;
         }        
     }
     
     function noMove(request) {
-        var distanceDifference = request.reportedDistance - request.lastDistance;
+        var distanceDifference = request.reportedDistance - request.lastReportedDistance;
         return distanceDifference == 0;
     }
     
     function tooFast(request) {
-        var distanceDifference = request.reportedDistance - request.lastDistance;
+        var distanceDifference = request.reportedDistance - request.lastReportedDistance;
         var tempoDistance = 100;
         var timeDifference = request.reportedTime - request.lastTime;
         var minimumTimeDifference = request.maximumTempo / (tempoDistance / distanceDifference);

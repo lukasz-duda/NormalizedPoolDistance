@@ -1,6 +1,7 @@
 class Response {
 
     var lastTime;
-    var lastDistance;
+    var lastReportedDistance;
+    var normalizedDistance;
 
 }

@@ -7,8 +7,9 @@ class DistanceTest {
         var distance = new Distance();
         
         var request = new Request();
-        request.lastDistance = 0;
+        request.lastReportedDistance = 0;
         request.lastTime = 0;
+        request.normalizedDistance = 0;
         request.maximumTempo = 80;
         request.reportedTime = 20;
         request.reportedDistance = 25;
@@ -16,7 +17,8 @@ class DistanceTest {
         var response = distance.normalize(request);
         
         DistanceTest.assertEqual(request.reportedTime, response.lastTime);
-        DistanceTest.assertEqual(request.reportedDistance, response.lastDistance);
+        DistanceTest.assertEqual(request.reportedDistance, response.lastReportedDistance);
+        DistanceTest.assertEqual(request.reportedDistance, response.normalizedDistance);
         
         return true;
     }
@@ -31,8 +33,9 @@ class DistanceTest {
         var distance = new Distance();
         
         var request = new Request();
-        request.lastDistance = 25;
+        request.lastReportedDistance = 25;
         request.lastTime = 20;
+        request.normalizedDistance = 0;
         request.maximumTempo = 80;
         request.reportedTime = 39;
         request.reportedDistance = 50;
@@ -40,7 +43,8 @@ class DistanceTest {
         var response = distance.normalize(request);
         
         DistanceTest.assertEqual(request.lastTime, response.lastTime);
-        DistanceTest.assertEqual(request.lastDistance, response.lastDistance);
+        DistanceTest.assertEqual(request.reportedDistance, response.lastReportedDistance);
+        DistanceTest.assertEqual(request.lastReportedDistance, response.normalizedDistance);
         return true;
     }
     
@@ -49,7 +53,7 @@ class DistanceTest {
         var distance = new Distance();
         
         var request = new Request();
-        request.lastDistance = 25;
+        request.lastReportedDistance = 25;
         request.lastTime = 20;
         request.maximumTempo = 80;
         request.reportedTime = 40;
@@ -58,7 +62,8 @@ class DistanceTest {
         var response = distance.normalize(request);
         
         DistanceTest.assertEqual(request.lastTime, response.lastTime);
-        DistanceTest.assertEqual(request.lastDistance, response.lastDistance);
+        DistanceTest.assertEqual(request.reportedDistance, response.lastReportedDistance);
+        DistanceTest.assertEqual(request.lastReportedDistance, response.normalizedDistance);
         return true;
     }
     
@@ -67,8 +72,9 @@ class DistanceTest {
         var distance = new Distance();
         
         var request = new Request();
-        request.lastDistance = 0;
+        request.lastReportedDistance = 0;
         request.lastTime = 0;
+        request.normalizedDistance = 0;
         request.maximumTempo = 80;
         request.reportedTime = 30;
         request.reportedDistance = 37.5;
@@ -76,8 +82,29 @@ class DistanceTest {
         var response = distance.normalize(request);
         
         DistanceTest.assertEqual(request.reportedTime, response.lastTime);
-        DistanceTest.assertEqual(37, response.lastDistance);
+        DistanceTest.assertEqual(request.reportedDistance, response.lastReportedDistance);
+        DistanceTest.assertEqual(37, response.normalizedDistance);
         
+        return true;
+    }
+    
+    (:test)
+    function afterInvalidPool_acceptsTheNextValid(logger) {
+        var distance = new Distance();
+        
+        var request = new Request();
+        request.lastReportedDistance = 50;
+        request.lastTime = 20;
+        request.normalizedDistance = 25;
+        request.maximumTempo = 80;
+        request.reportedTime = 40;
+        request.reportedDistance = 75;
+        
+        var response = distance.normalize(request);
+        
+        DistanceTest.assertEqual(request.reportedTime, response.lastTime);
+        DistanceTest.assertEqual(request.reportedDistance, response.lastReportedDistance);
+        DistanceTest.assertEqual(50, response.normalizedDistance);
         return true;
     }
 

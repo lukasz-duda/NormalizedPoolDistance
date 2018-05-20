@@ -1,7 +1,8 @@
 class Request {
 
     var lastTime;
-    var lastDistance;
+    var lastReportedDistance;
+    var normalizedDistance;
     var maximumTempo;
     var reportedTime;
     var reportedDistance;

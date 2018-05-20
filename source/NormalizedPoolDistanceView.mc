@@ -7,7 +7,8 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
 
     var maximumTempo;
     var lastTime = 0;
-    var lastDistance = 0;
+    var lastReportedDistance = 0.0;
+    var normalizedDistance = 0;
     
     var normalizedDistanceField;
     const NORMALIZED_DISTANCE_FIELD_ID = 0;
@@ -32,8 +33,9 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
 
     function compute(info) {
         var request = new Request();
-        request.lastDistance = lastDistance;
+        request.lastReportedDistance = lastReportedDistance;
         request.lastTime = lastTime;
+        request.normalizedDistance = normalizedDistance;
         request.maximumTempo = maximumTempo;
         request.setTimerTime(info.timerTime);
         request.setElapsedDistance(info.elapsedDistance);
@@ -41,11 +43,12 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
         var response = distance.normalize(request);
         
         lastTime = response.lastTime;
-        lastDistance = response.lastDistance;
+        lastReportedDistance = response.lastReportedDistance;
+        normalizedDistance = response.normalizedDistance;
         
-        normalizedDistanceField.setData(lastDistance);
+        normalizedDistanceField.setData(normalizedDistance);
         
-        return lastDistance;
+        return normalizedDistance;
     }
 
 }
