@@ -11,11 +11,7 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
     var normalizedDistance = 0;
     
     const NORMALIZED_DISTANCE_FIELD_ID = 0;
-    const NORMALIZED_LAP_DISTANCE_FIELD_ID = 1;
-    const NORMALIZED_SESSION_DISTANCE_FIELD_ID = 2;
     var normalizedDistanceField;
-    var normalizedLapDistanceField;
-    var normalizedSessionDistanceField;
 
     function initialize() {
         SimpleDataField.initialize();
@@ -24,31 +20,18 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
         bestPace = application.getProperty("BestPace");
         distance = new Distance();
         
-        createNormalizedDistanceFields();
+        createNormalizedDistanceField();
     }
     
-    function createNormalizedDistanceFields() {
+    function createNormalizedDistanceField() {
+            
         normalizedDistanceField = createField(
             "NormalizedDistance",
             NORMALIZED_DISTANCE_FIELD_ID,
             Fit.DATA_TYPE_UINT16,
-            { :nativeNum => 5, :mesgType => Fit.MESG_TYPE_RECORD, :units => "m" });
-            
-        normalizedLapDistanceField = createField(
-            "NormalizedLapDistance",
-            NORMALIZED_LAP_DISTANCE_FIELD_ID,
-            Fit.DATA_TYPE_UINT16,
-            { :nativeNum => 9, :mesgType => Fit.MESG_TYPE_LAP, :units => "m" });
-            
-        normalizedSessionDistanceField = createField(
-            "NormalizedSessionDistance",
-            NORMALIZED_SESSION_DISTANCE_FIELD_ID,
-            Fit.DATA_TYPE_UINT16,
-            { :nativeNum => 9, :mesgType => Fit.MESG_TYPE_SESSION, :units => "m" });
+            { :nativeNum => 5, :mesgType => Fit.MESG_TYPE_LAP, :units => "m" });
             
         normalizedDistanceField.setData(0);
-        normalizedLapDistanceField.setData(0);
-        normalizedSessionDistanceField.setData(0);
     }
 
     function compute(info) {
@@ -67,8 +50,6 @@ class NormalizedPoolDistanceView extends Ui.SimpleDataField {
         lastDistanceTime = response.lastDistanceTime;
         
         normalizedDistanceField.setData(normalizedDistance);
-        normalizedLapDistanceField.setData(normalizedDistance);
-        normalizedSessionDistanceField.setData(normalizedDistance);
         
         return normalizedDistance;
     }
