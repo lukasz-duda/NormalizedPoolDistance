@@ -11,12 +11,12 @@ class Distance {
             return response;
         }
         else {
-	        var response = new Response();
-	        response.lastDistanceTime = request.reportedTime;
+            var response = new Response();
+            response.lastDistanceTime = request.reportedTime;
             response.lastReportedDistance = request.reportedDistance;
             var poolLength = request.reportedDistance - request.lastReportedDistance;
             response.normalizedDistance = request.normalizedDistance + poolLength;
-	        return response;
+            return response;
         }        
     }
     

@@ -1,7 +1,6 @@
 <settings>
     <setting propertyKey="@Properties.BestPace"
-        title="@Strings.BestPaceTitle"
-        prompt="@Strings.BestPacePrompt">
+        title="@Strings.BestPaceTitle" prompt="@Strings.BestPacePrompt">
         <settingConfig type="numeric"
             errorMessage="@Strings.PaceError" />
     </setting>
